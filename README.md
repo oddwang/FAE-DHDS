@@ -6,7 +6,7 @@ Code is based on "Failing Loudly: An Empirical Study of Methods for Detecting Da
 
 ## Running experiments
 
-Run single experiments using:
+Run experiments using:
 
 ```
 python pipeline.py Dataset Shift_Type MMD Model_Name
