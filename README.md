@@ -4,17 +4,16 @@ Detecting whether a distribution shift has occurred in the data is an important 
 
 Code is based on "Failing Loudly: An Empirical Study of Methods for Detecting Dataset Shift": (https://github.com/steverab/failing-loudly) and "Detecting Covariate Drift with Explanations" (https://github.com/DFKI-NLP/xai-shift-detection)
 
-## Experiments
+## Running experiments
 
-For image shift experiments, we modify the failing-loudly framework. We evaluate MNIST with the multivariate MMD test. These can be run by the following:
+Run single experiments using:
 
 ```
-python pipeline.py mnist SHIFT_TYPE multiv
+python pipeline.py Dataset Shift_Type MMD Model_Name
 ```
 
-Example: `python pipeline.py mnist adversarial_shift multiv`
+Example: `python pipeline.py mnist adversarial_shift multiv resnet50`
 
-For text experiments, run `python alibi-imdb.py `
 
 
 ### Dependencies
