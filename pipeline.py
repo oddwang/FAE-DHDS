@@ -133,7 +133,6 @@ if test_type == 'multiv':
     od_tests = []
     md_tests = [MultidimensionalTest.MMD.value]
     samples = [10, 20, 50, 100, 200, 500, 1000]
-    samples = [10]
 else:
     od_tests = [OnedimensionalTest.KS.value]
     md_tests = []
