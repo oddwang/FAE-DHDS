@@ -10,9 +10,6 @@ import cv2
 
 from tensorflow.keras.datasets import mnist, cifar10, cifar100, boston_housing, fashion_mnist
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
-import imdb_model
-
-from imdb_model import get_embedding, grad_x_input
 
 
 
@@ -218,39 +215,6 @@ def import_dataset(dataset, shuffle=False):
             y_test[i:i+test_samples_per_cat] = y[j+train_samples_per_cat:j+samples_per_cat]
             i = i + test_samples_per_cat
             j = j + samples_per_cat
-    elif dataset == 'imdb':
-        (x_train, y_train), (x_test, y_test), _ = imdb_model.get_dataset()
-
-        mod_path = 'imdb_lstm'
-        model = tf.keras.models.load_model(mod_path)
-
-        x_train = np.array(get_embedding(model, x_train, y_train))
-        x_test = np.array(get_embedding(model, x_test[:1000], y_test))
-        print(x_train.shape)
-
-        y_test = y_test[:1000]
-        print('n_pert: {}'.format(x_test.shape))
-        nb_classes = 2
-    elif dataset == 'imdb_perturbed':
-        words = ['fantastic', 'good', 'bad', 'horrible']
-
-        (x_train, y_train), (x_test, y_test), (w2i, i2w) = imdb_model.get_dataset()
-
-        np.random.shuffle(x_test)
-        tokens = [w2i[w] for w in words]
-
-        prob = 0.05
-        rand_words = np.random.random_sample(x_test.shape) > 1 - prob
-
-        x_test[rand_words] = np.random.choice(tokens, x_test.shape)[rand_words]
-
-        mod_path = 'imdb_lstm'
-
-        model = tf.keras.models.load_model(mod_path)
-        x_test = np.array(get_embedding(model, x_test[:1000], y_test[:1000]))
-
-        print('pert: {}'.format(x_test.shape))
-        nb_classes = 2
 
     if shuffle:
         (x_train, y_train), (x_test, y_test) = random_shuffle_and_split(x_train, y_train, x_test, y_test, len(x_train))
