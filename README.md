@@ -26,4 +26,3 @@ We require the following dependencies:
 - `matplotlib`: https://github.com/matplotlib/matplotlib
 - `torch-two-sample`: https://github.com/josipd/torch-two-sample
 - `keras-resnet`: https://github.com/broadinstitute/keras-resnet
-- `alibi-detect`: https://github.com/SeldonIO/alibi-detect
