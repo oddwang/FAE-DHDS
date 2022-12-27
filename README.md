@@ -9,7 +9,7 @@ Code is based on "Failing Loudly: An Empirical Study of Methods for Detecting Da
 Run experiments using:
 
 ```
-python pipeline.py Dataset Shift_Type MMD Model_Name
+python pipeline.py Dataset Shift_Type multiv Model_Name
 ```
 
 Example: `python pipeline.py mnist adversarial_shift multiv resnet50`
